@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
-<title>Sunday League</title>
-<meta name="description" content="Sunday League — six a side on a council pitch. Keep the ball, find a run, and put it past a keeper who is better than he looks.">
-<meta name="theme-color" content="#0a0e12">
+<meta name="description" content="Sunday League - six a side on a council pitch. Keep the ball, find a run, and put it past a keeper who is better than he looks.">
+<meta name="theme-color" content="#0b2b16">
 <meta property="og:title" content="Sunday League">
 <meta property="og:description" content="Six a side on a council pitch. Keep the ball, find a run, and put it past a keeper who is better than he looks.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23fff' stroke='%23111' stroke-width='2'/%3E%3Cpath d='M16 8l5 3.6-1.9 5.9h-6.2L11 11.6z' fill='%23111'/%3E%3C/svg%3E">
+<title>Sunday League</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
@@ -2345,7 +2345,6 @@ const PSTYLE = {
   block:      {n:'Block',         s:'BLK',  g:'Defending'},
   intercept:  {n:'Intercept',     s:'INT',  g:'Defending'},
   bruiser:    {n:'Bruiser',       s:'BRU',  g:'Physical'},
-  aerial:     {n:'Aerial',        s:'AIR',  g:'Physical'},
   relentless: {n:'Relentless',    s:'REL',  g:'Physical'},
   longthrow:  {n:'Long Throw',    s:'THRW', g:'Physical'},
   // keeping
@@ -2376,17 +2375,17 @@ function styleTags(styles){
 }
 
 const PSTYLES_DB = {
-  'haaland':{powershot:2,aerial:2,acrobatic:1}, 'mbappé':{rapid:2,quickstep:2,finesse:1},
+  'haaland':{powershot:2,acrobatic:1}, 'mbappé':{rapid:2,quickstep:2,finesse:1},
   'bellingham':{pingedpass:1,technical:2,relentless:1}, 'vinícius':{rapid:2,trickster:2,flair:1},
   'yamal':{technical:2,trickster:2,finesse:2}, 'saka':{quickstep:1,technical:1,finesse:1},
   'rodri':{pingedpass:2,intercept:2,anticipate:1}, 'pedri':{tikitaka:2,technical:2,incisive:1},
   'wirtz':{incisive:2,technical:1,flair:1}, 'palmer':{finesse:2,deadball:2,incisive:1},
   'foden':{technical:2,trickster:1,finesse:1}, 'saliba':{anticipate:2,intercept:1,bruiser:1},
-  'vandijk':{aerial:2,anticipate:2,bruiser:1}, 'dias':{block:2,anticipate:1,aerial:1},
+  'vandijk':{anticipate:2,bruiser:1}, 'dias':{block:2,anticipate:1},
   'rice':{intercept:2,bruiser:1,longball:1}, 'ødegaard':{incisive:2,tikitaka:1,finesse:1},
-  'kane':{powershot:2,incisive:2,aerial:1}, 'isak':{rapid:1,finesse:2,firsttouch:1},
+  'kane':{powershot:2,incisive:2}, 'isak':{rapid:1,finesse:2,firsttouch:1},
   'gyökeres':{powershot:1,rapid:1,bruiser:1}, 'raphinha':{finesse:2,whipped:2,deadball:1},
-  'lewandowski':{powershot:1,aerial:1,firsttouch:1}, 'salah':{rapid:2,finesse:2,quickstep:1},
+  'lewandowski':{powershot:1,firsttouch:1}, 'salah':{rapid:2,finesse:2,quickstep:1},
   'kdb':{incisive:2,longball:2,whipped:2}, 'musiala':{technical:2,trickster:2,flair:1},
   'son':{rapid:1,finesse:1,quickstep:1}, 'alisson':{farreach:2,cross:1,rush:1},
   'donnarumma':{farreach:2,block:1}, 'courtois':{farreach:2,block:2}, 'raya':{cross:2,farreach:1},
@@ -2396,55 +2395,55 @@ const PSTYLES_DB = {
   'gravenberch':{technical:1,intercept:1,bruiser:1}, 'caicedo':{intercept:2,anticipate:2,bruiser:1},
   'enzo':{longball:2,pingedpass:1,incisive:1}, 'tonali':{longball:1,intercept:1,relentless:1},
   'barella':{relentless:2,pingedpass:1,intercept:1}, 'lautaro':{finesse:1,firsttouch:1,acrobatic:1},
-  'vlahović':{powershot:1,aerial:1}, 'dybala':{finesse:2,deadball:2,technical:1},
-  'kvaratskhelia':{trickster:2,technical:2,rapid:1}, 'osimhen':{rapid:2,aerial:2,powershot:1},
-  'lukaku':{bruiser:2,powershot:1,aerial:1}, 'dembélé':{rapid:2,trickster:2,technical:1},
+  'vlahović':{powershot:1}, 'dybala':{finesse:2,deadball:2,technical:1},
+  'kvaratskhelia':{trickster:2,technical:2,rapid:1}, 'osimhen':{rapid:2,powershot:1},
+  'lukaku':{bruiser:2,powershot:1}, 'dembélé':{rapid:2,trickster:2,technical:1},
   'vitinha':{tikitaka:2,technical:1,incisive:1}, 'neves':{longball:2,deadball:1,pingedpass:1},
-  'marquinhos':{anticipate:2,aerial:1,block:1}, 'hakimi':{rapid:2,whipped:1,quickstep:1},
+  'marquinhos':{anticipate:2,block:1}, 'hakimi':{rapid:2,whipped:1,quickstep:1},
   'kimmich':{longball:2,deadball:2,pingedpass:1}, 'musialax':{technical:1},
-  'olise':{whipped:2,finesse:2,technical:1}, 'guirassy':{powershot:1,aerial:1,rapid:1},
-  'schick':{finesse:1,aerial:1,firsttouch:1}, 'grimaldo':{deadball:2,whipped:2,longball:1},
+  'olise':{whipped:2,finesse:2,technical:1}, 'guirassy':{powershot:1,rapid:1},
+  'schick':{finesse:1,firsttouch:1}, 'grimaldo':{deadball:2,whipped:2,longball:1},
   'wirtzx':{incisive:1}, 'valverde':{powershot:2,relentless:2,longball:1},
-  'rüdiger':{bruiser:2,aerial:2,anticipate:1}, 'trent':{whipped:2,longball:2,deadball:2},
+  'rüdiger':{bruiser:2,anticipate:1}, 'trent':{whipped:2,longball:2,deadball:2},
   'carreras':{whipped:1,quickstep:1}, 'tchouaméni':{intercept:2,longball:1,bruiser:1},
   'rodrygo':{trickster:1,technical:1,finesse:1}, 'endrick':{powershot:1,acrobatic:1},
   'cubarsí':{anticipate:2,block:1,intercept:1}, 'koundé':{quickstep:1,anticipate:1,bruiser:1},
   'balde':{rapid:2,quickstep:1}, 'dejong':{technical:2,tikitaka:2,intercept:1},
   'gabrieljesus':{firsttouch:1,technical:1,acrobatic:1},
   'christensen':{anticipate:1,block:1,longball:1}, 'joangarcía':{farreach:1,cross:1},
-  'zubimendi':{pingedpass:2,intercept:1,anticipate:1}, 'gabriel':{aerial:2,bruiser:2,block:1},
+  'zubimendi':{pingedpass:2,intercept:1,anticipate:1}, 'gabriel':{bruiser:2,block:1},
   'calafiori':{technical:1,longball:1,bruiser:1}, 'timber':{anticipate:1,quickstep:1,block:1},
-  'martinelli':{rapid:2,quickstep:1}, 'havertz':{aerial:1,firsttouch:1,powershot:1},
+  'martinelli':{rapid:2,quickstep:1}, 'havertz':{firsttouch:1,powershot:1},
   'eze':{trickster:2,technical:2,finesse:1}, 'guimarães':{pingedpass:2,intercept:1,relentless:1},
   'tzolis':{technical:1,finesse:1}, 'mainoo':{technical:1,tikitaka:1},
-  'deligt':{anticipate:2,aerial:1,block:1}, 'martínezl':{bruiser:2,anticipate:1,block:1},
+  'deligt':{anticipate:2,block:1}, 'martínezl':{bruiser:2,anticipate:1,block:1},
   'brunof':{longball:2,deadball:2,incisive:2}, 'mbeumo':{finesse:2,rapid:1,technical:1},
-  'cunha':{trickster:1,powershot:1,technical:1}, 'šeško':{powershot:2,aerial:1,rapid:1},
-  'tielemans':{longball:1,deadball:1,pingedpass:1}, 'gvardiol':{bruiser:1,aerial:1,rapid:1},
-  'guéhi':{anticipate:2,aerial:1,block:1}, 'kovačić':{technical:2,tikitaka:1},
+  'cunha':{trickster:1,powershot:1,technical:1}, 'šeško':{powershot:2,rapid:1},
+  'tielemans':{longball:1,deadball:1,pingedpass:1}, 'gvardiol':{bruiser:1,rapid:1},
+  'guéhi':{anticipate:2,block:1}, 'kovačić':{technical:2,tikitaka:1},
   'reijnders':{pingedpass:1,relentless:1,incisive:1},
   'anderson':{intercept:2,pingedpass:1,relentless:1}, 'semenyo':{rapid:1,bruiser:1,powershot:1},
   'doku':{trickster:2,technical:2,quickstep:1}, 'kudus':{trickster:2,technical:1,rapid:1},
-  'solanke':{aerial:1,firsttouch:1,powershot:1}, 'kulusevski':{bruiser:1,technical:1,whipped:1},
+  'solanke':{firsttouch:1,powershot:1}, 'kulusevski':{bruiser:1,technical:1,whipped:1},
   'xavisimons':{technical:2,incisive:1,finesse:1}, 'vandeven':{rapid:2,anticipate:1,block:1},
   'porro':{whipped:2,deadball:1,longball:1}, 'robertson':{whipped:2,longball:1,relentless:1},
   'senesi':{anticipate:1,block:1}, 'pickford':{farreach:2,cross:1,longthrow:1},
-  'tarkowski':{aerial:2,block:2,bruiser:1}, 'branthwaite':{aerial:2,anticipate:1,bruiser:1},
-  'mateta':{powershot:1,aerial:1,bruiser:1}, 'wharton':{incisive:2,pingedpass:1,longball:1},
+  'tarkowski':{block:2,bruiser:1}, 'branthwaite':{anticipate:1,bruiser:1},
+  'mateta':{powershot:1,bruiser:1}, 'wharton':{incisive:2,pingedpass:1,longball:1},
   'muñoz':{relentless:2,whipped:1,quickstep:1}, 'sarr':{rapid:1,trickster:1},
   'watkins':{rapid:2,firsttouch:1,finesse:1}, 'kamara':{intercept:2,anticipate:1},
   'mcginn':{powershot:1,relentless:1}, 'garnacho':{rapid:1,trickster:1,quickstep:1},
   'mitoma':{trickster:2,technical:2,quickstep:1}, 'minteh':{rapid:1,technical:1},
-  'struijk':{aerial:1,block:1}, 'evanilson':{firsttouch:1,finesse:1,aerial:1},
-  'kluivert':{finesse:2,deadball:1,technical:1}, 'igorthiago':{powershot:1,aerial:1,bruiser:1},
+  'struijk':{block:1}, 'evanilson':{firsttouch:1,finesse:1},
+  'kluivert':{finesse:2,deadball:1,technical:1}, 'igorthiago':{powershot:1,bruiser:1},
   'damsgaard':{incisive:2,whipped:1,deadball:1}, 'xhaka':{pingedpass:2,longball:2,intercept:1},
   'brobbey':{bruiser:2,powershot:1}, 'gibbswhite':{technical:2,incisive:1,finesse:1},
-  'murillo':{anticipate:2,rapid:1,block:1}, 'milenković':{aerial:2,bruiser:1,block:1},
+  'murillo':{anticipate:2,rapid:1,block:1}, 'milenković':{bruiser:1,block:1},
   'sels':{farreach:1,block:1}, 'ndoye':{rapid:1,trickster:1},
-  'woltemade':{aerial:2,firsttouch:1,technical:1}, 'livramento':{rapid:2,quickstep:1},
-  'botman':{aerial:1,block:1,longball:1}, 'joelinton':{bruiser:2,relentless:1,aerial:1},
+  'woltemade':{firsttouch:1,technical:1}, 'livramento':{rapid:2,quickstep:1},
+  'botman':{block:1,longball:1}, 'joelinton':{bruiser:2,relentless:1},
   'elanga':{rapid:2,quickstep:1}, 'barnes':{rapid:1,finesse:1}, 'trafford':{farreach:1,cross:1},
-  'leno':{farreach:1,block:1}, 'andersen':{longball:2,aerial:1,block:1},
+  'leno':{farreach:1,block:1}, 'andersen':{longball:2,block:1},
   'robinsona':{rapid:2,relentless:1,whipped:1}, 'iwobi':{technical:1,relentless:1},
   'pedro':{firsttouch:1,finesse:1,technical:1}, 'neto':{trickster:1,technical:1,rapid:1},
   'colwill':{anticipate:1,longball:1,block:1}, 'james':{whipped:2,powershot:1,quickstep:1},
@@ -2457,22 +2456,22 @@ const PSTYLES_DB = {
   'best':{trickster:2,technical:2,quickstep:1}, 'cafu':{relentless:2,whipped:1,rapid:1},
   'charlton':{powershot:2,longball:2,finesse:1}, 'moore':{anticipate:2,intercept:2,block:1},
   'banks':{farreach:2,block:2}, 'gerrard':{powershot:2,longball:2,deadball:2},
-  'beckham':{whipped:2,deadball:2,longball:2}, 'shearer':{powershot:2,aerial:2,firsttouch:1},
-  'ferdinand':{anticipate:2,aerial:1,longball:1}, 'scholes':{incisive:2,longball:2,powershot:1},
+  'beckham':{whipped:2,deadball:2,longball:2}, 'shearer':{powershot:2,firsttouch:1},
+  'ferdinand':{anticipate:2,longball:1}, 'scholes':{incisive:2,longball:2,powershot:1},
   'acole':{rapid:2,relentless:1,anticipate:1}, 'neville':{whipped:1,relentless:1},
   'platini':{deadball:2,incisive:2,finesse:2}, 'zidanex':{technical:1},
   'henry':{rapid:2,finesse:2,quickstep:2}, 'vieira':{bruiser:2,intercept:2,relentless:1},
   'thuram':{anticipate:2,bruiser:1,rapid:1}, 'desailly':{bruiser:2,anticipate:1,block:1},
-  'blanc':{aerial:1,longball:1,anticipate:1}, 'lizarazu':{relentless:1,whipped:1},
-  'kopa':{technical:2,trickster:1,incisive:1}, 'fontaine':{firsttouch:1,powershot:1,aerial:1},
+  'blanc':{longball:1,anticipate:1}, 'lizarazu':{relentless:1,whipped:1},
+  'kopa':{technical:2,trickster:1,incisive:1}, 'fontaine':{firsttouch:1,powershot:1},
   'barthez':{rush:2,farreach:1}, 'buffon':{farreach:2,block:2,rush:1},
-  'cannavaro':{anticipate:2,intercept:2,aerial:1}, 'nesta':{anticipate:2,block:2,intercept:1},
+  'cannavaro':{anticipate:2,intercept:2}, 'nesta':{anticipate:2,block:2,intercept:1},
   'pirlo':{deadball:2,longball:2,incisive:2}, 'rivera':{incisive:2,technical:2,finesse:1},
   'baggio':{finesse:2,deadball:2,technical:2}, 'delpiero':{finesse:2,deadball:2,technical:1},
   'riva':{powershot:2,acrobatic:1,finesse:1}, 'tardelli':{relentless:1,powershot:1},
   'bergomi':{anticipate:1,bruiser:1}, 'casillas':{farreach:2,block:2,rush:1},
-  'ramos':{aerial:2,bruiser:2,anticipate:1}, 'puyol':{aerial:2,bruiser:2,anticipate:1},
-  'hierro':{powershot:2,aerial:2,deadball:1}, 'camacho':{relentless:1,anticipate:1},
+  'ramos':{bruiser:2,anticipate:1}, 'puyol':{bruiser:2,anticipate:1},
+  'hierro':{powershot:2,deadball:1}, 'camacho':{relentless:1,anticipate:1},
   'busquets':{intercept:2,tikitaka:2,anticipate:1}, 'xavi':{tikitaka:2,incisive:2,technical:2},
   'iniesta':{technical:2,tikitaka:2,flair:2}, 'raúl':{firsttouch:2,finesse:1,acrobatic:1},
   'villa':{finesse:2,acrobatic:2,firsttouch:1}, 'butragueño':{technical:2,finesse:1,firsttouch:1},
@@ -2481,30 +2480,30 @@ const PSTYLES_DB = {
   'matthäus':{powershot:2,relentless:2,longball:1}, 'sammer':{anticipate:2,longball:1,intercept:1},
   'schweinsteiger':{pingedpass:2,relentless:2,intercept:1},
   'netzer':{longball:2,incisive:2,deadball:1}, 'müller':{acrobatic:2,firsttouch:2,powershot:1},
-  'klose':{aerial:2,acrobatic:1,firsttouch:1}, 'taffarel':{farreach:1,block:1},
-  'carlosalberto':{powershot:2,whipped:1,relentless:1}, 'tsilva':{anticipate:2,block:1,aerial:1},
-  'lúcio':{bruiser:2,aerial:1,anticipate:1}, 'rcarlos':{powershot:2,deadball:2,rapid:2},
+  'klose':{acrobatic:1,firsttouch:1}, 'taffarel':{farreach:1,block:1},
+  'carlosalberto':{powershot:2,whipped:1,relentless:1}, 'tsilva':{anticipate:2,block:1},
+  'lúcio':{bruiser:2,anticipate:1}, 'rcarlos':{powershot:2,deadball:2,rapid:2},
   'falcão':{incisive:2,longball:2,powershot:1}, 'sócrates':{technical:2,incisive:2,flair:1},
   'zico':{deadball:2,finesse:2,technical:2}, 'garrincha':{trickster:2,technical:2,flair:2},
   'rnazário':{rapid:2,trickster:2,finesse:2}, 'ronaldinho':{trickster:2,flair:2,technical:2},
   'fillol':{farreach:1,block:1}, 'zanetti':{relentless:2,anticipate:1,rapid:1},
-  'passarella':{aerial:2,powershot:1,anticipate:1}, 'ayala':{anticipate:2,block:1},
+  'passarella':{powershot:1,anticipate:1}, 'ayala':{anticipate:2,block:1},
   'sorín':{whipped:1,relentless:1}, 'redondo':{technical:2,tikitaka:2,intercept:1},
   'mascherano':{intercept:2,bruiser:1,anticipate:1}, 'riquelme':{deadball:2,incisive:2,technical:2},
   'messi':{trickster:2,technical:2,finesse:2,deadball:2},
   'batistuta':{powershot:2,finesse:2,firsttouch:1}, 'kempes':{powershot:2,firsttouch:1,acrobatic:1},
   'vandersar':{farreach:2,longball:1,block:1}, 'reiziger':{rapid:1,anticipate:1},
-  'koeman':{powershot:2,deadball:2,longball:2}, 'stam':{bruiser:2,anticipate:1,aerial:1},
+  'koeman':{powershot:2,deadball:2,longball:2}, 'stam':{bruiser:2,anticipate:1},
   'krol':{longball:1,anticipate:1}, 'rijkaard':{bruiser:2,intercept:2,longball:1},
   'neeskens':{relentless:2,powershot:1,intercept:1}, 'gullit':{bruiser:2,technical:2,powershot:2},
   'bergkamp':{firsttouch:2,technical:2,finesse:2}, 'vanbasten':{acrobatic:2,finesse:2,firsttouch:2},
   'vbaía':{farreach:1,block:1}, 'pferreira':{anticipate:1,relentless:1},
-  'pepe':{aerial:2,bruiser:2,anticipate:1}, 'rcarvalho':{anticipate:2,block:1},
+  'pepe':{bruiser:2,anticipate:1}, 'rcarvalho':{anticipate:2,block:1},
   'coentrão':{whipped:1,relentless:1}, 'deco':{technical:2,incisive:2,tikitaka:1},
   'ruicosta':{incisive:2,technical:2,deadball:1}, 'veloso':{longball:1,deadball:1},
   'figo':{trickster:2,whipped:2,technical:2}, 'eusébio':{powershot:2,rapid:2,finesse:2},
-  'cristiano':{powershot:2,aerial:2,deadball:2}, 'bouhaddouz':{farreach:1},
-  'lauren':{relentless:1,anticipate:1}, 'keita':{bruiser:1,aerial:1}, 'zoro':{anticipate:1,rapid:1},
+  'cristiano':{powershot:2,deadball:2}, 'bouhaddouz':{farreach:1},
+  'lauren':{relentless:1,anticipate:1}, 'keita':{bruiser:1}, 'zoro':{anticipate:1,rapid:1},
   'ytouré':{bruiser:2,powershot:2,technical:1}, 'okocha':{trickster:2,flair:2,technical:2},
   'abedipelé':{technical:2,incisive:2,flair:1}, 'weah':{rapid:2,powershot:2,firsttouch:1},
   'etoo':{rapid:2,finesse:2,firsttouch:1}
@@ -2520,7 +2519,7 @@ Object.assign(PSTYLES_DB, {
   'vinijr':{rapid:2,trickster:2,flair:1},
   'macallister':{pingedpass:1,longball:1,relentless:1},
   'joaopedro':{firsttouch:1,finesse:1,technical:1},
-  'araujo2':{anticipate:2,bruiser:1,aerial:1},
+  'araujo2':{anticipate:2,bruiser:1},
   'martinez':{farreach:2,rush:1,block:1},
   'gakpo':{technical:1,finesse:1,rapid:1},
   'chevalier':{farreach:1,block:1},
@@ -2530,18 +2529,18 @@ Object.assign(PSTYLES_DB, {
   'calhanoglu':{deadball:2,longball:2,pingedpass:1},
   'modric':{technical:2,longball:2,incisive:1},
   'pulisic':{technical:1,finesse:1,quickstep:1},
-  'bremer':{aerial:2,bruiser:1,anticipate:1},
+  'bremer':{bruiser:1,anticipate:1},
   'svilar':{farreach:2,block:1},
   'kone':{bruiser:1,intercept:1,relentless:1},
   'buongiorno':{anticipate:2,block:1,bruiser:1},
-  'mctominay':{powershot:1,aerial:1,relentless:1},
+  'mctominay':{powershot:1,relentless:1},
   'lobotka':{tikitaka:2,technical:1,intercept:1},
-  'kean':{rapid:1,powershot:1,aerial:1},
+  'kean':{rapid:1,powershot:1},
   'ederson':{relentless:1,intercept:1,longball:1},
   'lookman':{trickster:2,finesse:1,rapid:1},
   'huijsen':{longball:2,anticipate:1,block:1},
   'oblak':{farreach:2,block:2,rush:1},
-  'romero':{anticipate:2,bruiser:2,aerial:1},
+  'romero':{anticipate:2,bruiser:2},
   'alvarez':{finesse:2,firsttouch:1,technical:1},
   'simon':{farreach:1,longball:1},
   'remiro':{farreach:1,block:1},
@@ -2572,9 +2571,9 @@ function stylesFor(name, pos, rating){
   const out = {};
   const h = hashName(styleKey(name) || 'x');
   const pool = pos === 'GK' ? ['farreach','rush','cross','block']
-    : pos === 'DF' ? ['anticipate','block','intercept','aerial','bruiser','relentless']
+    : pos === 'DF' ? ['anticipate','block','intercept','bruiser','relentless']
     : pos === 'MF' ? ['pingedpass','longball','intercept','relentless','technical','tikitaka']
-    : ['finesse','powershot','rapid','quickstep','technical','firsttouch','aerial'];
+    : ['finesse','powershot','rapid','quickstep','technical','firsttouch','acrobatic'];
   const n = rating >= 84 ? 3 : rating >= 76 ? 2 : rating >= 68 ? 1 : 0;
   for(let i=0;i<n;i++){
     const id = pool[(h >>> (i*5 + 3)) % pool.length];
@@ -2798,8 +2797,8 @@ function skillStarsFor(name, pos, rating, dri){
 const ARCHETYPES = [
   { id:'poacher',  name:'POACHER',      pos:'FW', blurb:'Lives on the shoulder. First to everything in the six-yard box.',
     base:{pac:84, sho:86, pas:62, dri:80, def:32, phy:72}, style:'firsttouch', stars:3 },
-  { id:'target',   name:'TARGET MAN',   pos:'FW', blurb:'Back to goal, holds it up, unplayable from a cross.',
-    base:{pac:68, sho:84, pas:66, dri:72, def:42, phy:88}, style:'aerial', stars:2 },
+  { id:'target',   name:'TARGET MAN',   pos:'FW', blurb:'Back to goal, holds it up, impossible to shift.',
+    base:{pac:68, sho:84, pas:66, dri:72, def:42, phy:88}, style:'bruiser', stars:2 },
   { id:'raider',   name:'RAIDER',       pos:'FW', blurb:'Straight past the full-back and away.',
     base:{pac:90, sho:76, pas:68, dri:86, def:34, phy:64}, style:'rapid', stars:4 },
   { id:'magician', name:'MAGICIAN',     pos:'FW', blurb:'Beats men for fun and finds the corner from nowhere.',
@@ -2812,8 +2811,8 @@ const ARCHETYPES = [
     base:{pac:70, sho:62, pas:74, dri:68, def:86, phy:86}, style:'intercept', stars:2 },
   { id:'sprayer',  name:'SPRAYER',      pos:'MF', blurb:'Switches the play sixty yards without looking.',
     base:{pac:64, sho:76, pas:88, dri:76, def:66, phy:70}, style:'longball', stars:3 },
-  { id:'sentinel', name:'SENTINEL',     pos:'DF', blurb:'Heads it, kicks it, wins it. Nothing gets past.',
-    base:{pac:68, sho:44, pas:60, dri:58, def:86, phy:88}, style:'aerial', stars:1 },
+  { id:'sentinel', name:'SENTINEL',     pos:'DF', blurb:'Blocks it, kicks it, wins it. Nothing gets past.',
+    base:{pac:68, sho:44, pas:60, dri:58, def:86, phy:88}, style:'block', stars:1 },
   { id:'sweeper',  name:'BALL PLAYER',  pos:'DF', blurb:'Steps out with it and starts the whole thing.',
     base:{pac:74, sho:52, pas:78, dri:72, def:82, phy:76}, style:'longball', stars:3 },
   { id:'fullback', name:'OVERLAP',      pos:'DF', blurb:'Up and back the touchline, whipping them in.',
@@ -3537,7 +3536,7 @@ function buildRig(kit, number, look){
    ===================================================================== */
 function blankPose(){
   return {
-    rootY:0, rootRX:0, rootRZ:0,
+    rootY:0, rootRX:0, rootRZ:0, rootZ:0,
     torsoFwd:0, torsoTwist:0, torsoRoll:0, headFwd:0,
     armLFwd:0, armRFwd:0, armLOut:0, armROut:0, elbL:0, elbR:0,
     legLFwd:0, legRFwd:0, legLOut:0, legROut:0,
@@ -3663,18 +3662,85 @@ function actionPose(p, out, act, u){
     out['leg'+O+'Fwd'] = 0.7*f; out['knee'+O] = 1.0*f;
     out['leg'+K+'Fwd'] = -0.5*f; out['knee'+K] = 0.9*f;
   }
+  else if(act.name === 'bike'){
+    /* An overhead kick. He dips, throws himself up and backwards, turns his
+       shoulders under the ball, scissors the legs over his head, and lands
+       flat on his back. K is the boot that meets it. */
+    const K = s > 0 ? 'R' : 'L', O = s > 0 ? 'L' : 'R';
+    const dip   = track(u, [[0,0],[0.09,1],[0.24,0.1],[1,0]]);        // load the legs
+    const jump  = track(u, [[0,0],[0.12,0.25],[0.34,1],[0.58,0.95],[0.86,0.15],[1,0]]);
+    const turn  = track(u, [[0,0],[0.16,0.28],[0.44,1],[0.74,1],[1,0.40]]);
+    const wind  = track(u, [[0,0],[0.26,1],[0.44,0],[1,0]]);          // legs cock back
+    const swipe = track(u, [[0,0],[0.34,0],[0.48,1],[0.70,0.55],[1,0.10]]);
+    const land  = track(u, [[0,0],[0.82,0],[0.93,1],[1,0.85]]);
+
+    out.rootY  = jump*1.00 - dip*0.34 - land*0.42;
+    out.rootRX = -2.30*turn + 0.30*land;                 // right over backwards
+    out.rootRZ = s * 0.40 * turn;
+    out.torsoFwd = -0.34*turn;
+    out.headFwd  = -0.30*turn;
+
+    out['leg'+K+'Fwd'] = 2.30*swipe - 0.70*wind;         // the scissor
+    out['knee'+K]      = 1.05*wind;
+    out['leg'+O+'Fwd'] = -1.15*swipe + 0.55*wind;
+    out['knee'+O]      = 0.85*swipe + 0.60*wind;
+    out['leg'+K+'Out'] =  s*0.16*turn;
+    out['leg'+O+'Out'] = -s*0.16*turn;
+
+    out.armLOut = 1.50*turn; out.armROut = 1.50*turn;    // arms out for balance
+    out.armLFwd = -0.60*turn; out.armRFwd = -0.60*turn;
+    out.elbL = 0.30*turn; out.elbR = 0.30*turn;
+  }
   else if(act.name === 'dive'){
-    const f = track(u, [[0,0],[0.3,1],[0.72,1],[1,0.15]]);
-    const h = track(u, [[0,0],[0.35,0.5],[0.8,0.1],[1,0]]);
-    out.rootY  = h;
-    out.rootRZ = s*1.45*f;
-    out.rootRX = -0.2*f;
-    out.armLFwd = 0.2*f; out.armRFwd = 0.2*f;
-    out.armLOut = 1.55*f; out.armROut = 1.55*f;
-    out.elbL = 0.12; out.elbR = 0.12;
-    out.legLFwd = -0.25*f; out.legRFwd = -0.1*f;
-    out.kneeL = 0.5*f; out.kneeR = 0.2*f;
-    out.torsoFwd = 0.15*f;
+    /* A proper goalkeeper's dive: he loads on the near leg, springs sideways
+       and gets full height, stretches both arms at the ball with the top one
+       leading, trails the far leg, and comes down on his side. The old one
+       was a stiff topple with both arms out level. */
+    const A = s > 0 ? 'R' : 'L', B = s > 0 ? 'L' : 'R';   // A = the diving side
+    // the push: a quick crouch, then up and across, then down to land
+    const load = track(u, [[0,0],[0.10,1],[0.26,0.15],[1,0]]);
+    const fly  = track(u, [[0,0],[0.14,0.35],[0.34,1],[0.74,1],[1,0.75]]);
+    // stays down through the crouch, or the spring cancels it out
+    const air  = track(u, [[0,0],[0.13,0],[0.30,0.80],[0.44,1],[0.64,0.86],[0.86,0.12],[1,0]]);
+    const land = track(u, [[0,0],[0.80,0],[0.90,1],[1,0.8]]);
+
+    out.rootY  = air * 0.92 - load * 0.30;          // dip, spring, drop
+    out.rootRZ = s * (1.62*fly + 0.10*land);        // over onto his side
+    out.rootRX = -0.30*fly + 0.12*load;
+    out.rootZ  = s * 0.55 * fly;                    // and genuinely travels
+
+    // the top arm leads at full stretch, the lower one braces underneath
+    out['arm'+A+'Out'] = 2.05*fly;
+    out['arm'+B+'Out'] = 1.30*fly;
+    out['arm'+A+'Fwd'] = 0.34*fly - 0.20*land;
+    out['arm'+B+'Fwd'] = 0.05*fly;
+    out['elb'+A] = 0.05 + 0.28*land;                // straight, then folds on impact
+    out['elb'+B] = 0.30 + 0.45*load;
+
+    // near leg drives, far leg trails behind him
+    out['leg'+A+'Fwd'] = -0.15*fly;
+    out['leg'+B+'Fwd'] = -0.52*fly;
+    out['leg'+A+'Out'] =  s*0.30*fly;
+    out['leg'+B+'Out'] = -s*0.16*fly;
+    out['knee'+A] = 1.15*load + 0.22*fly;
+    out['knee'+B] = 0.75*load + 0.62*fly;
+
+    out.torsoFwd   = 0.30*load + 0.20*fly;
+    out.torsoTwist = -s*0.30*fly;
+    out.torsoRoll  =  s*0.22*fly;
+    out.headFwd    = 0.26*fly;                      // eyes on the ball
+  }
+  else if(act.name === 'brace'){
+    // standing up and making himself big, arms wide, weight low
+    const f = track(u, [[0,0],[0.18,1],[0.72,1],[1,0.2]]);
+    out.rootY = -0.16*f;
+    out.armLOut = 1.42*f; out.armROut = 1.42*f;
+    out.armLFwd = 0.30*f; out.armRFwd = 0.30*f;
+    out.elbL = 0.34*f; out.elbR = 0.34*f;
+    out.kneeL = 0.72*f; out.kneeR = 0.72*f;
+    out.legLOut = 0.26*f; out.legROut = -0.26*f;
+    out.torsoFwd = 0.34*f;
+    out.headFwd = 0.16*f;
   }
   else if(act.name === 'power'){
     out['leg'+K+'Fwd'] = track(u, [[0,-0.15],[0.42,-1.35],[0.62,1.50],[0.78,1.05],[1,0.45]]);
@@ -4019,6 +4085,7 @@ function animatePlayer(p, dt){
   }
 
   r.body.position.y = pose.rootY;
+  r.body.position.z = pose.rootZ || 0;    // a dive carries him sideways
   r.body.rotation.x = pose.rootRX;
   r.body.rotation.z = pose.rootRZ;
   r.torso.rotation.set(pose.torsoFwd, pose.torsoTwist, pose.torsoRoll);
@@ -4858,12 +4925,33 @@ function updatePossession(dt){
     let best = null, bd = Infinity;
     for(const p of all){
       if(p.stunned > 0 || p.slideT > 0 || p.dummy) continue;
+      if(ball.hot > 0 && p.isGK) continue;      // the keeper has his own save check
       const d = dist(p.pos, ball.pos);
-      const reach = CONTROL_R * (0.86 + 0.30*ABIL.touch(p.stats.dri))
-        * styMul(p, 'firsttouch', 1.08, 1.16) + pace;
+      // A shot has to be got in front of — no growing reach, no clean first
+      // touch. Before this a 25 m/s drive was easier to intercept than a
+      // tap, because the reach grew with the pace of the ball.
+      const reach = ball.hot > 0
+        ? CONTROL_R * 0.52
+        : CONTROL_R * (0.86 + 0.30*ABIL.touch(p.stats.dri))
+          * styMul(p, 'firsttouch', 1.08, 1.16) + pace;
       if(d < reach && d < bd){ bd = d; best = p; }
     }
-    if(best){ take(best); }
+    if(best){
+      if(ball.hot > 0){
+        // it cannons off him rather than being controlled
+        const away = norm(sub(ball.pos, best.pos));
+        const sp = ballSpeed2D();
+        // it drops near him rather than flying off for a throw
+        ball.vel.x = away.x*Math.min(sp*0.34, 7) + rnd(-1.0, 1.0);
+        ball.vel.z = away.z*Math.min(sp*0.34, 7) + rnd(-1.0, 1.0);
+        ball.vel.y = 1.3 + Math.random()*1.1;
+        ball.spin *= 0.3; ball.dip *= 0.3;
+        ball.hot = 0;
+        lastTouch = best; lockT = 0.18; takeCd = TAKE_CD;
+        stats.tackles[best.team]++;
+        toast('BLOCKED', '', .7);
+      } else take(best);
+    }
   }
 }
 
@@ -4893,8 +4981,11 @@ function kickFoot(p){
 function kick(p, dir3, speed, lift, anim, spin, dip){
   sfxKick(speed);
   if(anim === 'pass') meNote(p, 'passes');
+  // a struck shot is not a pass — it cannot simply be plucked out of the air
+  ball.hot = (anim === 'pass' || anim === 'throw') ? 0 : 0.85;
   const d = norm({x:dir3.x, z:dir3.z});
   const dur = anim === 'pass' ? 0.32
+            : anim === 'bike' ? 0.90
             : anim === 'finesse' ? 0.52
             : anim === 'chip' ? 0.46
             : anim === 'lowdrive' ? 0.38 : 0.44;
@@ -4927,12 +5018,38 @@ function shotAimOf(p, inp){
   return clamp((inp.z / m) * -dir, -1, 1) * Math.min(1, m);
 }
 
+/* Where your shot goes. Only the player's own shots come through here.
+
+   The old version aimed at `ball.pos.z*0.45` plus your stick. Running straight
+   at goal gives no sideways stick at all, so the aim was zero and a central
+   player shot at the exact middle of the goal — into the keeper's hands, every
+   single time. Now the stick maps straight across the goalmouth, and if you
+   haven't aimed it picks the bigger gap beside the keeper instead of his chest. */
 function shotDirection(p, aimBias){
-  const target = goalMouth(p.team, ball.pos.z*0.45 + aimBias*5.0);
+  const gx = tgtGoalX(p.team);
+  const W  = F.goalHalfW * 0.88;                  // just inside the post
+  const keeper = teams[1 - p.team] && teams[1 - p.team][0];
+  const kz = keeper ? clamp(keeper.pos.z, -W, W) : 0;
+
+  let z;
+  if(Math.abs(aimBias) > 0.12){
+    z = aimBias * W;                              // you aimed: post to post
+  } else {
+    // you didn't: put it past him on his weaker side, not down his throat
+    z = (kz >= 0 ? -1 : 1) * W * 0.80;
+  }
+  // and never straight at him when you have picked a side
+  if(Math.abs(z - kz) < 0.9) z = kz + (z >= kz ? 0.9 : -0.9);
+
+  const target = { x: gx, z: clamp(z, -W, W) };
   const toGoal = norm(sub(target, ball.pos));
-  const d = dot(toGoal, p.facing);
-  const w = clamp((d - 0.05) / 0.55, 0, 1);
-  return norm({ x: lerp(p.facing.x, toGoal.x, w), z: lerp(p.facing.z, toGoal.z, w) });
+  /* Your aim wins. The stick you hold to pick a corner also turns your player,
+     so blending the shot back toward his body — which is what used to happen —
+     dragged every aimed shot sideways off the pitch instead of into the corner.
+     Your body only still matters when you shoot with the goal behind you. */
+  const toward = dirOf(p.team) * p.facing.x;
+  if(toward > -0.35) return toGoal;
+  return norm({ x: lerp(p.facing.x, toGoal.x, 0.5), z: lerp(p.facing.z, toGoal.z, 0.5) });
 }
 
 function nearestOpponent(p){
@@ -5447,17 +5564,62 @@ function keeperUpdate(p, dt){
     return;
   }
 
-  // set for a free kick or penalty: read the flight and go early
+  /* A penalty: he has already thrown himself one way and cannot change his
+     mind. Before this he tracked the flight at nearly twice his top speed,
+     so his "guess" was decorative and penalties felt unfair. */
+  if(p.reach > 0 && p.pen){
+    const goZ = p.pen.dir * F.goalHalfW * 0.82;
+    // he is committed — he travels to where he dived, wherever the ball goes
+    steer(p, {x: homeX, z: goZ}, dt, p.topSpeed * (p.pen.dir === 0 ? 0.9 : 2.1));
+    /* Judge it as the ball reaches him, not 2.4m earlier — a shot bound for
+       the corner is still near-central halfway there, and reading it early
+       made every corner look like a comfortable save. */
+    if(Math.abs(ball.pos.x - p.pos.x) < 1.25 && ballNear < 2.6
+       && ball.pos.y < 3.0 && lockT <= 0){
+      const went = Math.abs(ball.pos.z) < 1.15 ? 0 : Math.sign(ball.pos.z);
+      const right = went === p.pen.dir;
+      const high = clamp(ball.pos.y / F.goalH, 0, 1);
+      const tight = Math.min(1, Math.abs(ball.pos.z) / F.goalHalfW);
+      // only a correct guess gives him a chance, and the corners still beat him
+      const odds = right
+        ? clamp((0.68 - tight*0.30 - high*0.24) * ABIL.keep(p.rating), 0.05, 0.80)
+        : 0;
+      /* Go the wrong way and he gets nothing on it. The old push-away fired
+         even on a wrong guess, which is why a penalty down the middle was
+         somehow never a goal. */
+      if(right && Math.random() < odds){
+        if(ballSpeed2D() > 17){
+          const away = norm(sub(ball.pos, p.pos));
+          ball.vel.x = away.x*8; ball.vel.z = away.z*8; ball.vel.y = 2.4;
+          ball.spin = 0; ball.dip = 0;
+          lastTouch = p; lockT = 0.2; p.reach = 0;
+          popStyle(p, 'farreach');
+          toast('SAVED!', 'He went the right way', 1.2);
+          sfxSave(); roar(0.5, 1.5);
+        } else {
+          ball.vel.x = ball.vel.y = ball.vel.z = 0;
+          ball.spin = 0; ball.dip = 0;
+          take(p);
+          popStyle(p, 'farreach');
+          toast('SAVED!', 'He went the right way', 1.2);
+          sfxSave(); roar(0.5, 1.5);
+        }
+      }
+    }
+    return;
+  }
+
+  // a free kick: reading the flight is fair, he has time to see it
   if(p.reach > 0){
     const closing = Math.abs(ball.vel.x) > 1
       ? Math.abs(ball.pos.x - p.pos.x) / Math.abs(ball.vel.x) : 0.2;
     const land = ball.pos.z + ball.vel.z*Math.min(closing, 0.6);
-    steer(p, {x: homeX, z: clamp(land, -F.goalHalfW-1.1, F.goalHalfW+1.1)}, dt, p.topSpeed*1.75);
+    steer(p, {x: homeX, z: clamp(land, -F.goalHalfW-1.1, F.goalHalfW+1.1)}, dt, p.topSpeed*1.6);
     if(ballNear < 2.5 && ball.pos.y < 3.0 && lockT <= 0){
       const corner = Math.min(1, Math.abs(ball.pos.z)/F.goalHalfW);
       const high = clamp(ball.pos.y/F.goalH, 0, 1);
-      const odds = clamp((0.86 - corner*0.40 - high*0.18) * ABIL.keep(p.rating)
-        * styMul(p, 'cross', 1.10, 1.22), 0.16, 0.93);
+      const odds = clamp((0.72 - corner*0.42 - high*0.22) * ABIL.keep(p.rating)
+        * styMul(p, 'cross', 1.10, 1.22), 0.10, 0.86);
       if(high) popStyle(p, 'cross');
       if(Math.random() < odds){
         ball.vel.x = ball.vel.y = ball.vel.z = 0;
@@ -5483,23 +5645,84 @@ function keeperUpdate(p, dt){
   const danger = (!possessor || possessor.team !== p.team)
     ? clamp((13 - threat) / 13, 0, 1) : 0;
   p.keeperOut = (p.keeperOut || 0) + (danger - (p.keeperOut || 0)) * (1 - Math.exp(-4.5*dt));
-  const rush = (!possessor ? 4.2 : 2.0) * p.keeperOut;
-  const tx = homeX + dir*rush;
-  const tz = clamp(ball.pos.z * (0.62 + 0.18*p.keeperOut),
-                   -F.goalHalfW*(0.92 + 0.38*p.keeperOut),
-                    F.goalHalfW*(0.92 + 0.38*p.keeperOut));
-  // and he does not shuffle for a few centimetres
-  const off = Math.hypot(tx - p.pos.x, tz - p.pos.z);
-  if(off > 0.30) steer(p, {x:tx, z:tz}, dt, p.topSpeed);
-  else drive(p, {x:0, z:0}, dt);
 
-  // save attempt: a keeper can claim the ball from slightly further out
-  if(ballNear < 1.5 && ball.pos.y < 2.2 && lockT <= 0 && (!possessor || possessor.team !== p.team)){
+  /* Once a shot is struck he has to commit. He gets ONE read of it — with an
+     error that grows with the pace and how wide it is going — then he is
+     committed to that guess and cannot re-aim.
+
+     Before this he steered at the live ball every single frame, including
+     while the shot was in the air. As the ball converged on the corner so did
+     he, so he was never beaten by placement and you had to be almost on the
+     line to score. */
+  const incoming = ball.hot > 0 && (ball.vel.x * dir) < -1.5 && threat > 0;
+  if(!incoming){ p.read = null; p.tried = false; }
+  else if(!p.read){
+    const flight = Math.max(0.05, Math.abs(ball.pos.x - gx) / Math.max(4, Math.abs(ball.vel.x)));
+    const landZ  = ball.pos.z + ball.vel.z * flight;
+    const pace   = Math.min(1, ballSpeed2D() / 28);
+    const wide   = Math.min(1, Math.abs(landZ) / F.goalHalfW);
+    const skill  = Math.max(0.7, ABIL.keep(p.rating));
+    const miss   = (0.25 + pace*1.70 + wide*1.30) / skill;      // how badly he can read it
+    p.read = {
+      z: clamp(landZ + rnd(-miss, miss), -F.goalHalfW*1.3, F.goalHalfW*1.3),
+      wait: 0.20 + 0.10*(1 - Math.min(1, skill/1.25))            // human reaction time
+    };
+  }
+
+  if(p.read){
+    p.read.wait -= dt;
+    /* A set keeper shuffles and then throws himself — he does not sprint
+       along his line. He was covering the width of the goal in half a second,
+       which is why placement never beat him. The dive itself is `span` below. */
+    if(p.read.wait <= 0) steer(p, {x: homeX, z: p.read.z}, dt, p.topSpeed*0.55);
+    else drive(p, {x:0, z:0}, dt);                                // still reacting
+  } else {
+    const rush = (!possessor ? 4.2 : 2.0) * p.keeperOut;
+    const tx = homeX + dir*rush;
+    const tz = clamp(ball.pos.z * (0.62 + 0.18*p.keeperOut),
+                     -F.goalHalfW*(0.92 + 0.38*p.keeperOut),
+                      F.goalHalfW*(0.92 + 0.38*p.keeperOut));
+    // and he does not shuffle for a few centimetres
+    const off = Math.hypot(tx - p.pos.x, tz - p.pos.z);
+    if(off > 0.30) steer(p, {x:tx, z:tz}, dt, p.topSpeed);
+    else drive(p, {x:0, z:0}, dt);
+  }
+
+  /* Save attempt. It used to be a flat 90% whatever the shot, so a screamer
+     into the top corner was stopped as often as a tame roller. Now how well
+     you strike it decides: pace, how far he has to move, and height all cut
+     his chances, which is what makes shooting worth doing well. */
+  /* And he can only save what he can actually reach. Judged as the ball comes
+     level with him, so where he guessed is what decides it. */
+  const level = Math.abs(ball.pos.x - p.pos.x) < 1.45;
+  const gap   = Math.abs(ball.pos.z - p.pos.z);
+  const span  = 0.95 + 1.00 * Math.min(1.35, ABIL.keep(p.rating))
+              * styMul(p, 'farreach', 1.06, 1.12);
+  /* One attempt per shot. This was rolled every frame the ball was near him —
+     seven frames at even odds is a certainty, which is why the save chance
+     barely mattered no matter what it was set to. */
+  if((level || ballNear < 1.0) && gap < span && ball.pos.y < 2.35 && lockT <= 0
+     && !p.tried && (!possessor || possessor.team !== p.team)){
+    p.tried = true;
     playAction(p, 'dive', 0.85, ball.pos.z >= p.pos.z ? dirOf(p.team) : -dirOf(p.team));
-    if(Math.random() < 0.90*W.aim*ABIL.keep(p.rating)*styMul(p, 'farreach', 1.06, 1.12)){
-      ball.vel.x = ball.vel.y = ball.vel.z = 0;
-      take(p);
-      if(threat < 9){ popStyle(p, 'farreach'); toast('SAVED', '', .9); sfxSave(); roar(0.4, 1.2); }
+    const pace    = Math.min(1, ballSpeed2D() / 30);             // 30 m/s is a rocket
+    const stretch = gap / span;                                  // 1 = at full stretch
+    const high    = clamp((ball.pos.y - 0.35) / 1.9, 0, 1);
+    const hard    = clamp(pace*0.26 + stretch*0.55 + high*0.20, 0, 0.92);
+    const odds    = 1.00 * (1 - hard) * W.aim;
+    if(Math.random() < odds){
+      // a fierce one is parried rather than caught
+      if(ballSpeed2D() > 19){
+        const away = norm(sub(ball.pos, p.pos));
+        ball.vel.x = away.x*8.5; ball.vel.z = away.z*8.5; ball.vel.y = 2.2;
+        ball.spin = 0; ball.dip = 0;
+        lastTouch = p; lockT = 0.22;
+        popStyle(p, 'farreach'); toast('PARRIED', '', .9); sfxSave(); roar(0.4, 1.2);
+      } else {
+        ball.vel.x = ball.vel.y = ball.vel.z = 0;
+        take(p);
+        if(threat < 9){ popStyle(p, 'farreach'); toast('SAVED', '', .9); sfxSave(); roar(0.4, 1.2); }
+      }
     } else if(W.aim < 1 && Math.random() < 0.5){
       const away = norm(sub(ball.pos, p.pos));
       ball.vel.x = away.x*6; ball.vel.z = away.z*6; ball.vel.y = 2.4;
@@ -5821,6 +6044,52 @@ const HEAD_LO = 1.05, HEAD_HI = 2.75;
 // man nods it straight back and the ball never comes down.
 let headLock = 0;
 
+/* =====================================================================
+   THE BICYCLE KICK
+   Same buttons as a trivela — hold jockey and hit shoot — but it only comes
+   out when the ball is genuinely up in the air and off your feet. With it on
+   the floor those same buttons still give you the trivela they always did.
+   ===================================================================== */
+const BIKE_LO = 0.95, BIKE_HI = 3.05;     // the window you can reach overhead
+
+function canBicycle(p){
+  if(possessor) return false;                          // not while it is at someone's feet
+  if(lockT > 0 && lastTouch === p) return false;       // and not off your own boot
+  if(p.stunned > 0 || p.slideT > 0 || p.jump > 0 || p.kickCd > 0) return false;
+  if(p.windup || p.skill) return false;
+  if(ball.pos.y < BIKE_LO || ball.pos.y > BIKE_HI) return false;
+  return Math.hypot(ball.pos.x - p.pos.x, ball.pos.z - p.pos.z) < 2.1;
+}
+
+function doBicycle(p, inp){
+  p.jump   = 0.66;
+  p.kickCd = 0.66;
+  p.vel.x *= 0.22; p.vel.z *= 0.22;          // you plant and go up, you don't carry on running
+  puff(p.pos.x, p.pos.z, 2);
+
+  // acrobats catch it cleanly; everyone else swings and hopes
+  const acro  = styMul(p, 'acrobatic', 1.24, 1.48);
+  const reach = Math.min(1, (ball.pos.y - BIKE_LO) / 1.5);    // higher ball, harder to time
+  const acc   = ABIL.shoot(p.stats.sho) * acro;
+  const speed = (15.5 + 6.5*(1 - reach*0.5)) * ABIL.power(p.stats.sho) * acro;
+  const lift  = clamp(2.15 - ball.pos.y*0.52, 0.10, 1.75);
+  const spread = (0.055 + reach*0.075) / acc;
+
+  const d = rot(shotDirection(p, shotAimOf(p, inp)), rnd(-spread, spread));
+  ball.pos.y = clamp(ball.pos.y, 1.05, 2.45);
+  kick(p, d, speed, lift, 'bike', p.foot * 0.30, 0.30);
+
+  stats.shots[p.team]++;
+  const mouth = goalMouth(p.team, 0);
+  if(laneClear(ball.pos, mouth, p.team, 0.7)) stats.onTarget[p.team]++;
+  meNote(p, 'shots');
+  popStyle(p, 'acrobatic');
+  shakeT = Math.max(shakeT, 0.34);
+  toast('BICYCLE KICK', '', .8);
+  roar(0.48, 1.25);
+  if(p === user) rumble(.75, .5, 210);
+}
+
 /* Heading is out of the game. The functions below are left in place so
    nothing that calls them breaks, but nobody ever heads a ball: a high one
    is brought down and played on the floor instead. */
@@ -5840,7 +6109,7 @@ function canHead(p){
 // taller, better players win more of them
 function aerial(p){
   return ABIL.touch(p.stats.phy) * (0.82 + (p.height || 1) * 0.35)
-         * styMul(p, 'aerial', 1.20, 1.42);
+         * styMul(p, 'bruiser', 1.20, 1.42);
 }
 
 function doHeader(p, kind, aimAt){
@@ -5871,13 +6140,13 @@ function doHeader(p, kind, aimAt){
     speed = clamp(dist(p.pos, target)*1.25, 8, 18);
     lift = 2.4;
   }
-  const e = (1 - ABIL.touch(p.stats.phy)*0.7) * 0.10 / styMul(p, 'aerial', 1.15, 1.30);
+  const e = (1 - ABIL.touch(p.stats.phy)*0.7) * 0.10 / styMul(p, 'bruiser', 1.15, 1.30);
   const d = rot(norm(sub(target, p.pos)), rnd(-e, e));
   ball.pos.y = clamp(ball.pos.y, 1.3, 2.3);
   kick(p, d, speed, Math.max(lift, kind === 'shot' ? -0.6 : 3.2), null);
   lastTouch = p;
   meNote(p, 'headers');
-  popStyle(p, kind === 'shot' ? 'acrobatic' : 'aerial');
+  popStyle(p, 'acrobatic');
   if(p === user) rumble(.5, .35, 130);
   toast(kind === 'shot' ? 'HEADER' : kind === 'clear' ? 'HEADED CLEAR' : 'HEADED ON', '', .6);
   if(kind === 'shot') roar(0.42, 1.1);
@@ -6269,7 +6538,8 @@ function fireShot(p, w){
                 : w.type === 'chip'    ? styMul(p, 'chipshot', 1.18, 1.35) : 1;
   const acc   = (big ? S.acc * (0.22 + ch*1.45) : S.acc) * ABIL.shoot(p.stats.sho) * styShot;
   const over  = big ? 0 : Math.max(0, ch - 0.88) / 0.12;
-  const spread = (0.05 + over*0.08) / acc;
+  // a player's shot should land where he aimed; only wild power sprays
+  const spread = (0.018 + over*0.06) / acc;
   const spin = S.curve * p.foot * (0.55 + ch*0.75) * styMul(p, 'finesse', 1.15, 1.32) + w.lat * 1.25;
   const dip  = S.dip * (0.5 + ch) + (low ? 0.55 : 0);
   // aim off so the curl finishes on target, the way you'd open your body up
@@ -6461,7 +6731,12 @@ function userUpdate(p, dt){
   } else if(!hasBall){
     charge = 0;
   }
-  if(hit('shoot') && !hasBall) userSlide(p);
+  /* Off the ball, shoot is a slide tackle — unless you are holding jockey and
+     there is a ball in the air you can get a boot to, which is the bicycle. */
+  if(hit('shoot') && !hasBall){
+    if(held('jockey') && canBicycle(p)) doBicycle(p, inp);
+    else userSlide(p);
+  }
   if(gone('shoot')){
     if(hasBall && p.kickCd <= 0 && !p.windup) beginShot(p, charge, inp);
     charge = 0;
@@ -6560,6 +6835,7 @@ function dribbleBall(dt){
 // authored as two scalars, turned into a real angular-velocity vector each
 // step, and the Magnus force is the cross product of that with velocity.
 function integrateBall(b, dt){
+  if(b.hot > 0) b.hot = Math.max(0, b.hot - dt);
   const v = b.vel;
   const speed = Math.hypot(v.x, v.y, v.z);
   const airborne = b.pos.y > BALL_R + 0.01;
@@ -7256,6 +7532,8 @@ function strikeFreeKick(chargeAmt, byUser){
   ball.pos.y = BALL_R + 0.02;
   ball.vel.x = L.vx; ball.vel.y = L.vy; ball.vel.z = L.vz;
   ball.spin = L.spin; ball.dip = L.dip; ball.knuckle = L.knuckle;
+  // a struck set piece is a shot too — it was being quietly collected before
+  ball.hot = 1.1;
   lastTouch = p;
   possessor = null;
   lockT = 0.3;
@@ -7266,15 +7544,23 @@ function strikeFreeKick(chargeAmt, byUser){
     playAction(q, 'jump', 0.7);
   }
   const keeper = teams[1-t][0];
-  /* The keeper has to commit. He reads a penalty far less often now, and if
-     you have picked a corner rather than the middle he has further to go. */
-  const corner = Math.min(1, Math.abs(aimZ) / 3.0);
-  const readOdds = fk.pen ? (byUser ? 0.50 : 0.70) : 0.80;
-  const guess = fk.pen
-    ? (Math.random() < readOdds ? Math.sign(aimZ || rnd(-1,1)) : -Math.sign(aimZ || 1))
-    : Math.sign(aimZ - keeper.pos.z || 1);
-  playAction(keeper, 'dive', 0.85, guess * dirOf(1-t) >= 0 ? 1 : -1);
-  keeper.reach = (fk.pen ? 0.88 : 1.20) * (1 - corner*0.22);
+  /* A penalty is a guess: left, right, or stand up. He picks before the ball
+     is struck and never sees where you aimed — the old version read your aim
+     and then tracked the flight, which is why it felt impossible. Keepers
+     mostly dive, so standing up is the rare choice. */
+  if(fk.pen){
+    const r = Math.random();
+    const keeperGuess = r < 0.44 ? -1 : r < 0.88 ? 1 : 0;
+    keeper.pen = { dir: keeperGuess };
+    playAction(keeper, keeperGuess === 0 ? 'brace' : 'dive', 0.95,
+               keeperGuess * dirOf(1-t) >= 0 ? 1 : -1);
+    keeper.reach = 1.15;
+  } else {
+    keeper.pen = null;
+    const guess = Math.sign(aimZ - keeper.pos.z || 1);
+    playAction(keeper, 'dive', 0.9, guess * dirOf(1-t) >= 0 ? 1 : -1);
+    keeper.reach = 1.20;
+  }
 
   fkSpin = byUser ? 0.85 : 0;     // seconds you get to shape it after the strike
   aimRing.visible = false;
@@ -7495,7 +7781,10 @@ function checkRules(){
    ===================================================================== */
 let kickoffTeam = 0;
 
+function clearPenCommit(){ for(const t of [0,1]) for(const q of teams[t]) q.pen = null; }
+
 function resetPositions(team){
+  clearPenCommit();
   for(const t of [0,1]){
     for(const p of teams[t]){
       p.pos.x = p.base.x; p.pos.z = p.base.z;
@@ -8282,6 +8571,7 @@ const HELP_KB = [
   ['Move','WASD / arrows'], ['Sprint','Shift'],
   ['Shoot','hold Space'], ['Low driven','tap Space again'],
   ['Finesse','X + Space'], ['Trivela','Z + Space'],
+  ['Bicycle kick','Z + Space (ball in the air)'],
   ['Power shot','C + X + Space'], ['Chip','C + Space'],
   ['Pass','E'], ['Pinged pass','X + E'], ['Long ball / cross','R'], ['Through','Q'],
   ['Agile dribble','X (with ball)'],
@@ -8293,7 +8583,7 @@ const HELP_KB = [
   ['Heel to heel','4'], ['Roulette','5'], ['Elastico','6'],
   ['Drag back','7'], ['Rainbow','8'], ['Sombrero','9'], ['Knock on','0'],
   ['Free kick','WASD aims'], ['Contact point','arrow keys'],
-  ['Switch taker','C'], ['Play it short','E'], ['Head it on','E'], ['Head clear','R'],
+  ['Switch taker','C'], ['Play it short','E'],
   ['Corner / throw / goal kick','WASD aims'],
   ['Floated ball','R'], ['Driven ball','Q'], ['Short','E'],
   ['Pause','P']
@@ -8304,6 +8594,7 @@ function paintHelp(){
     ['Move','Left stick'], ['Sprint', g.rt],
     ['Shoot','hold ' + g.b], ['Low driven','tap ' + g.b + ' again'],
     ['Finesse', g.rb + ' + ' + g.b], ['Trivela', g.lt + ' + ' + g.b],
+    ['Bicycle kick', g.lt + ' + ' + g.b + ' (ball in the air)'],
     ['Power shot', g.lb + ' + ' + g.rb + ' + ' + g.b], ['Chip', g.lb + ' + ' + g.b],
     ['Pass', g.a], ['Pinged pass', g.rb + ' + ' + g.a], ['Long ball / cross', g.x], ['Through', g.y],
     ['Agile dribble', g.rb + ' (with ball)'],
@@ -9294,7 +9585,7 @@ function paintCareer(){
 function offerStyle(slot){
   const pl = careerSquad()[slot];
   const pool = pl.pos === 'GK' ? ['farreach','rush','cross','block']
-    : pl.pos === 'DF' ? ['anticipate','block','intercept','aerial','bruiser','relentless','longball']
+    : pl.pos === 'DF' ? ['anticipate','block','intercept','bruiser','relentless','longball']
     : pl.pos === 'MF' ? ['pingedpass','longball','incisive','tikitaka','intercept','relentless','technical','deadball']
     : ['finesse','powershot','rapid','quickstep','technical','trickster','firsttouch','acrobatic','whipped'];
   // upgrade one he already has before buying a new one, if he can afford it
