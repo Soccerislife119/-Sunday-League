@@ -7971,9 +7971,23 @@ function arenaRules(){
    ===================================================================== */
 const NET_PREFIX = 'sundayleague26-';
 const NET_LIB = 'https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js';
+/* Candidates are gathered up front and a couple of extra stun servers are
+   listed, so the two browsers find a route to each other in about a second
+   instead of waiting on one slow server. The relays stay in the list as a
+   fallback for anyone behind a strict router. */
+const NET_ICE = {
+  iceServers: [
+    { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302',
+             'stun:global.stun.twilio.com:3478'] },
+    { urls: 'turn:eu-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' },
+    { urls: 'turn:us-0.turn.peerjs.com:3478', username: 'peerjs', credential: 'peerjsp' }
+  ],
+  iceCandidatePoolSize: 4,
+  sdpSemantics: 'unified-plan'
+};
 const ONLINE_ACTS = ['pass','shoot','cross','through','tackle','slide','swap',
                      'skill','roulette','contain','jockey','sprint'];
-const net = { peer:null, conn:null, me:'', friend:'', pendingConn:null, pendingFrom:'' };
+const net = { peer:null, conn:null, me:'', friend:'', pendingConn:null, pendingFrom:'', inviteT:null };
 let onlineRole = null;            // null, 'host' or 'guest'
 let remoteUser = null, remoteHold = 0;
 let netOut = 0, netSnap = null, savedDiff = null;
@@ -8160,36 +8174,63 @@ function netSend(obj){
   try { c.send(obj); } catch(e){}
 }
 
+let peerLib = null;
 function loadPeerJS(){
-  return new Promise((res, rej) => {
-    if(window.Peer) return res();
+  if(window.Peer) return Promise.resolve();
+  // one fetch, shared: asking twice while it is in flight waits on the first
+  if(peerLib) return peerLib;
+  peerLib = new Promise((res, rej) => {
     const s = document.createElement('script');
     s.src = NET_LIB;
     s.onload = () => window.Peer ? res() : rej(new Error('no Peer'));
-    s.onerror = () => rej(new Error('load'));
+    s.onerror = () => { peerLib = null; rej(new Error('load')); };
     (document.head || document.body).appendChild(s);
   });
+  return peerLib;
+}
+
+// True once there is no point trying — the Claude preview blocks outside links.
+function netBlocked(){
+  return /claude\.ai|claudeusercontent/.test(String(location && location.hostname || ''));
+}
+
+/* Get the slow parts out of the way while the player is still on the menu:
+   the library download and signing in to the introduction service both used
+   to happen only once you opened the screen, one after the other, with you
+   watching. Now they are done by the time you get there — and an invite can
+   reach you from anywhere in the menus. */
+function warmOnline(){
+  if(netBlocked() || net.peer) return;
+  let saved = '';
+  try { saved = localStorage.getItem('sl-online-name') || ''; } catch(e){}
+  loadPeerJS().then(() => { if(saved && !net.peer) goOnline(saved, true); }, () => {});
 }
 
 const validName = n => /^[a-z0-9]{3,15}$/.test(n);
 function onStatus(msg){ el('onStatus').textContent = msg || ''; }
 
-async function goOnline(raw){
+async function goOnline(raw, quiet){
   // the Claude preview blocks outside connections, so say so plainly
-  if(/claude\.ai|claudeusercontent/.test(String(location && location.hostname || ''))){
+  if(netBlocked()){
     onStatus('Online play works on your own website (like your GitHub link), not in the Claude preview.');
     return;
   }
   const name = String(raw || '').toLowerCase().trim();
   if(!validName(name)){ onStatus('Use 3 to 15 letters or numbers \u2014 no spaces or symbols.'); return; }
-  onStatus('Connecting\u2026');
+  if(!quiet) onStatus('Connecting\u2026');
   try { await loadPeerJS(); }
   catch(e){ onStatus("Couldn't reach the connection service. Check your internet and try again."); return; }
   if(net.peer){ try { net.peer.destroy(); } catch(e){} }
   net.me = '';
-  const peer = new window.Peer(NET_PREFIX + name, { debug: 0 });
+  const peer = new window.Peer(NET_PREFIX + name, { debug: 0, config: NET_ICE });
   net.peer = peer;
+  // if signing in stalls, say so rather than sitting on a spinner for ever
+  const slow = setTimeout(() => {
+    if(net.peer === peer && !net.me)
+      onStatus('The connection service is being slow. Give it a few seconds\u2026');
+  }, 5000);
   peer.on('open', () => {
+    clearTimeout(slow);
     net.me = name;
     try { localStorage.setItem('sl-online-name', name); } catch(e){}
     onStatus('');
@@ -8226,11 +8267,17 @@ function invite(raw){
   if(who === net.me){ onStatus("That's you!"); return; }
   closeConn();
   net.friend = who;
+  try { localStorage.setItem('sl-online-friend', who); } catch(e){}
   onStatus('Looking for ' + who + '\u2026');
   const conn = net.peer.connect(NET_PREFIX + who,
     { reliable: true, serialization: 'json', metadata: { from: net.me } });
   net.conn = conn;
   wireConn(conn);
+  if(net.inviteT) clearTimeout(net.inviteT);
+  net.inviteT = setTimeout(() => {
+    if(net.conn === conn && !onlineRole)
+      onStatus("Still no answer from " + who + ". Make sure they have the game open on Play with a friend.");
+  }, 12000);
   conn.on('open', () => {
     conn.send({ t:'invite', from: net.me });
     onStatus('Invite sent. Waiting for ' + who + ' to accept\u2026');
@@ -8324,6 +8371,7 @@ function hostStart(){
 }
 
 function startOnlineMatch(role, cfg){
+  if(net.inviteT){ clearTimeout(net.inviteT); net.inviteT = null; }
   if(arena) endArena();
   careerMatch = null;
   if(cfg){
@@ -9598,10 +9646,15 @@ function offerStyle(slot){
 el('hubOnline').addEventListener('click', ()=>{
   showScreen('online');
   paintOnline();
-  // come back online automatically under the name used last time
+  // usually already signed in from the warm-up, so this is just the fallback
   let saved = '';
   try { saved = localStorage.getItem('sl-online-name') || ''; } catch(e){}
   if(!net.me && saved) goOnline(saved);
+  // and the friend you played last time is typed in ready to go
+  try {
+    const f = localStorage.getItem('sl-online-friend') || '';
+    if(f && !el('onFind').value) el('onFind').value = f;
+  } catch(e){}
 });
 el('onGo').addEventListener('click', ()=> goOnline(el('onUser').value));
 el('onUser').addEventListener('keydown', e=>{ if(e.key === 'Enter') goOnline(el('onUser').value); });
@@ -9757,6 +9810,8 @@ el('helpToggle').addEventListener('click', ()=>{
 initPost();
 resize();
 buildWeatherFX();
+// sign in for Play with a friend in the background, so it is ready when wanted
+(window.requestIdleCallback || (f => setTimeout(f, 1200)))(() => warmOnline());
 applyWeather(WEATHER[settings.weather]);
 paintHelp();
 paintTeams();
